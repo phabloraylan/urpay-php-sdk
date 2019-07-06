@@ -2,7 +2,7 @@
 	"name": "phabloraylan/urpay-php-sdk",
 	"type": "library",
     "description": "SDK PHP do urpay.com.br",
-	"keywords": ["log","logging"],
+	"keywords": ["sdk","urpay","rest","php"],
     "homepage": "https://github.com/phabloraylan/urpay-php-sdk",
     "license": "MIT",
     "authors": [
