@@ -20,7 +20,7 @@ Inclua o autoload em seu projeto, exemplo:
 require_once __DIR__ . '/vendor/autoload.php';
 ```
 
-Instancie a classe  de cliente:
+Instanciar a classe  de cliente:
 
 ```php
 //Classe cliente
@@ -33,7 +33,7 @@ $cliente->setTokenComum('<TOKEN>');
 Instancie a classe de consulta:
 
 ```php
-//O construtor da classe requer uma instancia de cliente
+//O construtor da classe requer uma instância de cliente
 $consulta = new \URPay\Consulta($cliente);
 ```
 
