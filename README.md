@@ -66,6 +66,3 @@ try{
     echo $e->getMessage();//Mensagem de erro
 }
 ```
-
-Caso aja erro na consulta, token ou de rede, é retornado um Exception, você pode tratar-las com exemplos em:
-<http://docs.guzzlephp.org/en/stable/quickstart.html#exceptions>
