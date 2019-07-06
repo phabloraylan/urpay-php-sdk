@@ -40,15 +40,31 @@ $consulta = new \URPay\Consulta($cliente);
 Obtenha informações de um usuário específico:
 
 ```php
-$usuario = $consulta->getUsuario('usuario'); 
-print_r($usuario)//retorno em array
+try{
+
+    $usuario = $consulta->getUsuario('usuário');
+    print_r($usuario);//retorno em array
+
+}catch(\URPay\Exception\NaoEncontrado $e){
+    echo $e->getMessage();//Mensagem de erro
+}catch(\URPay\Exception\ErroServidor $e){
+    echo $e->getMessage();//Mensagem de erro
+}
 ```
 
 Obtenha informações de uma transferência específica:
 
 ```php
-$transf = $consulta->getTransferencia('id-transferência'); 
-print_r($transf);//retorno em array
+try{
+
+    $transferencia = $consulta->getTransferencia('id transfência');
+    print_r($transferencia);//retorno em array
+
+}catch(\URPay\Exception\NaoEncontrado $e){
+    echo $e->getMessage();//Mensagem de erro
+}catch(\URPay\Exception\ErroServidor $e){
+    echo $e->getMessage();//Mensagem de erro
+}
 ```
 
 Caso aja erro na consulta, token ou de rede, é retornado um Exception, você pode tratar-las com exemplos em:
