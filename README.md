@@ -30,7 +30,7 @@ $cliente = new \URPay\Cliente();
 $cliente->setTokenComum('<TOKEN>');
 ```
 
-Instancie a classe de consulta:
+Instanciar a classe de consulta:
 
 ```php
 //O construtor da classe requer uma instância de cliente
