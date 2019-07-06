@@ -33,7 +33,7 @@ $cliente->setTokenComum('<TOKEN>');
 Instancie a classe de consulta:
 
 ```php
-//O construtor da classe requer uma instancia de cleinte
+//O construtor da classe requer uma instancia de cliente
 $consulta = new \URPay\Consulta($cliente);
 ```
 
