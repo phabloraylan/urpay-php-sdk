@@ -6,6 +6,6 @@ class ExampleTest extends TestCase
     public function testExample()
     {
         
-        $this->assertTrue(true);
+        $this->assertEquals("testing",\getenv('TOKEN_COMUM'));
     }
 }
