@@ -1,6 +1,6 @@
 <?php
 
-namespace URPay;
+namespace Tests;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 { }

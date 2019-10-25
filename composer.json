@@ -26,11 +26,11 @@
         }
     },
     "autoload-dev": {
-        "psr-4": {
-            "URPay\\": "tests/"
-        }
+        "classmap": [
+            "tests/"
+        ]
     },
 	"require-dev": {
-		"phpunit/phpunit": "^8.3"
+		"phpunit/phpunit": "8.4"
 	}
 }
