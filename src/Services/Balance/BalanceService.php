@@ -9,6 +9,7 @@ use URPay\Http\Endpoint;
 use GuzzleHttp\Exception\ServerException;
 use URPay\Exceptions\URPayResponseException;
 use URPay\Exceptions\URPayTokenException;
+use URPay\Utils\MoneyUtil;
 
 class BalanceService extends Api
 {
@@ -26,10 +27,10 @@ class BalanceService extends Api
             $arr = self::fromJson($response)['balance'];
 
             self::$balance = new Balance();
-            self::$balance->setBalance($arr['balance']);
-            self::$balance->setBlocked($arr['balance_blocked']);
-            self::$balance->setFuture($arr['balance_future']);
-            self::$balance->setGiftcard($arr['balance_giftcard']);
+            self::$balance->setBalance(MoneyUtil::convertIntToDecimal($arr['balance']));
+            self::$balance->setBlocked(MoneyUtil::convertIntToDecimal($arr['balance_blocked']));
+            self::$balance->setFuture(MoneyUtil::convertIntToDecimal($arr['balance_future']));
+            self::$balance->setGiftcard(MoneyUtil::convertIntToDecimal($arr['balance_giftcard']));
         }
 
         return self::$balance;
