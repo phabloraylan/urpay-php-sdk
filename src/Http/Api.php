@@ -41,7 +41,4 @@ abstract class Api
         return $arr['message']['message'];
     }
 
-
-
-    abstract static function getResponse(Client $client);
 }

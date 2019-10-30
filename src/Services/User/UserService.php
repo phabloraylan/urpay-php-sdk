@@ -9,7 +9,6 @@ use URPay\Http\Endpoint;
 use GuzzleHttp\Exception\ServerException;
 use URPay\Exceptions\URPayResponseException;
 use URPay\Exceptions\URPayTokenException;
-use URPay\Utils\MoneyUtil;
 
 class UserService extends Api
 {
@@ -19,11 +18,11 @@ class UserService extends Api
     private function __construct()
     { }
 
-    public static function getUser(Client $client, $user)
+    public static function getUser(Client $client, $user_id)
     {
         if (!isset(self::$user)) {
 
-            $response = self::getResponse($client, $user);
+            $response = self::getResponse($client, $user_id);
             $arr = self::fromJson($response)['user'];
 
             self::$user = new User();
@@ -32,7 +31,7 @@ class UserService extends Api
             self::$user->setUser($arr['user']);
             self::$user->setName($arr['name']);
 
-            $document = Document();
+            $document = new Document();
             $document->setDocument($arr['document']['document']);
             $document->setType($arr['document']['type']);
 
@@ -49,12 +48,12 @@ class UserService extends Api
         return self::$user;
     }
 
-    public static function getResponse(Client $client, $user)
+    public static function getResponse(Client $client, $user_id)
     {
         try {
             $clientRest = self::getClientRest();
 
-            $response = $clientRest->request(self::GET, Endpoint::USER . '/' . $user, [
+            $response = $clientRest->request(self::GET, Endpoint::USER . '/' . $user_id, [
                 'headers' => [
                     'Authorization' => $client->getTokenCommon()
                 ]
