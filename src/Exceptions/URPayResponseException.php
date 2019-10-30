@@ -7,5 +7,5 @@ namespace URPay\Exceptions;
  *
  * @package URPay
  */
-class URPayResponseException extends URPaySDKException
+class URPayResponseException extends \Exception
 { }
