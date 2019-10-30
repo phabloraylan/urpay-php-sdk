@@ -14,9 +14,6 @@ class BalanceTest extends TestCase
 
         $balanceResponse = BalanceService::getBalance($client);
 
-        $this->assertEquals("1153.20", $balanceResponse->getBalance());
-        $this->assertEquals("0", $balanceResponse->getBlocked());
-        $this->assertEquals("0", $balanceResponse->getFuture());
-        $this->assertEquals("0", $balanceResponse->getGiftcard());
+        $this->assertEquals(getenv("BALANCE_VALUE"), $balanceResponse->getBalance());
     }
 }
