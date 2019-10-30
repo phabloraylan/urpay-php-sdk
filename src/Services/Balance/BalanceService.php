@@ -2,10 +2,12 @@
 
 namespace URPay\Services\Balance;
 
+use GuzzleHttp\Exception\ClientException;
 use URPay\Client;
 use URPay\Http\Api;
-use GuzzleHttp\Exception\RequestException;
+use URPay\Http\Endpoint;
 use GuzzleHttp\Exception\ServerException;
+use URPay\Exceptions\URPayResponseException;
 use URPay\Exceptions\URPayTokenException;
 
 class BalanceService extends Api
@@ -20,25 +22,14 @@ class BalanceService extends Api
     {
         if (!isset(self::$balance)) {
 
-            try {
+            $response = self::getResponse($client);
+            $arr = self::fromJson($response)['balance'];
 
-                $response = self::getResponse($client);
-                $arr = self::fromJson($response)['balance'];
-
-                self::$balance = new Balance();
-                self::$balance->setBalance($arr['balance']);
-                self::$balance->setBlocked($arr['balance_blocked']);
-                self::$balance->setFuture($arr['balance_future']);
-                self::$balance->setGiftcard($arr['balance_giftcard']);
-            } catch (RequestException $e) {
-
-                if ($e->getStatusCode() == 401) {
-                    $message = self::getErrorMessage($e);
-                    throw new URPayTokenException($message, $e->getStatusCode());
-                }
-
-                throw new URPayServerException($e->getMessage(), $e->getStatusCode());
-            }
+            self::$balance = new Balance();
+            self::$balance->setBalance($arr['balance']);
+            self::$balance->setBlocked($arr['balance_blocked']);
+            self::$balance->setFuture($arr['balance_future']);
+            self::$balance->setGiftcard($arr['balance_giftcard']);
         }
 
         return self::$balance;
@@ -46,13 +37,24 @@ class BalanceService extends Api
 
     public static function getResponse(Client $client)
     {
-        $clientRest = self::getClientRest();
+        try {
+            $clientRest = self::getClientRest();
 
-        $response = $clientRest->request(self::GET, 'v1/user-api/balance', [
-            'headers' => [
-                'Authorization' => $client->getTokenCommon()
-            ]
-        ]);
+            $response = $clientRest->request(self::GET, Endpoint::BALANCE, [
+                'headers' => [
+                    'Authorization' => $client->getTokenCommon()
+                ]
+            ]);
+        } catch (ClientException $e) {
+
+            if ($e->getCode() == 401) {
+                throw new URPayTokenException(self::getErrorMessage($e), $e->getCode());
+            }
+
+            throw new URPayResponseException(self::getErrorMessage($e), $e->getCode());
+        } catch (ServerException $e) {
+            throw new URPayServerException("Erro no servidor da URPay", $e->getCode());
+        }
 
         return $response;
     }
