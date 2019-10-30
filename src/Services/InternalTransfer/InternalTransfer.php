@@ -2,7 +2,7 @@
 
 namespace URPay\Services\InternalTransfer;
 
-use URPay\User\User;
+use URPay\Services\User\User;
 
 class InternalTransfer
 {
