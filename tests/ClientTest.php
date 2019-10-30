@@ -9,7 +9,7 @@ class ClientTest extends TestCase
 {
     public function testTokenConfigFileExists()
     {
-        $file = __DIR__ . "/urpay_tokens.json";
+        $file = __DIR__ . "/files/urpay_tokens.json";
         $this->assertFileExists($file);
     }
 
@@ -17,7 +17,10 @@ class ClientTest extends TestCase
     {
         $this->expectException(URPaySDKException::class);
         $client = new Client();
-        $file = __DIR__ . "/urpay_token.json";
+        $file = __DIR__ . "/files/urpay_tokens.json";
+        $client->setTokenConfig($file);
+
+        $file = __DIR__ . "/files/urpay_tokens_invalid.json";
         $client->setTokenConfig($file);
     }
 }

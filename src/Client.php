@@ -75,8 +75,17 @@ class Client
             throw new URPaySDKException("O arquivo de configuração não existe no caminho " . $file, 500);
         }
 
-        $this->tokenConfig = $file;
+        $json = file_get_contents($file);
 
-        return $this;
+        if ($file != json_decode($json, true)) {
+            throw new URPaySDKException('O arquivo de configuração possui json inválido');
+        }
+
+        if (!isset($file['common']) && !isset($file['transfer'])) {
+            throw new URPaySDKException('O arquivo de configuração deve conter os campos common e transfer');
+        }
+
+        $this->tokenCommon = $file['common'];
+        $this->tokenTransfer = $file['transfer'];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace URPay\Bean;
+namespace URPay\Services\Balance;
 
 class Balance
 {
@@ -71,7 +71,7 @@ class Balance
 
     /**
      * Get the value of giftcard
-     */ 
+     */
     public function getGiftcard()
     {
         return $this->giftcard;
@@ -81,7 +81,7 @@ class Balance
      * Set the value of giftcard
      *
      * @return  self
-     */ 
+     */
     public function setGiftcard($giftcard)
     {
         $this->giftcard = $giftcard;

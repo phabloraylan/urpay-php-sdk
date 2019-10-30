@@ -1,6 +1,6 @@
 <?php
 
-namespace URPay\Bean;
+namespace URPay\Services\User;
 
 class Document
 {
@@ -9,7 +9,7 @@ class Document
 
     /**
      * Get the value of document
-     */ 
+     */
     public function getDocument()
     {
         return $this->document;
@@ -19,7 +19,7 @@ class Document
      * Set the value of document
      *
      * @return  self
-     */ 
+     */
     public function setDocument($document)
     {
         $this->document = $document;
@@ -29,7 +29,7 @@ class Document
 
     /**
      * Get the value of type
-     */ 
+     */
     public function getType()
     {
         return $this->type;
@@ -39,7 +39,7 @@ class Document
      * Set the value of type
      *
      * @return  self
-     */ 
+     */
     public function setType($type)
     {
         $this->type = $type;

@@ -1,6 +1,6 @@
 <?php
 
-namespace URPay\Bean;
+namespace URPay\Services\User;
 
 class User
 {
@@ -93,7 +93,7 @@ class User
 
     /**
      * Get the value of document
-     */ 
+     */
     public function getDocument()
     {
         return $this->document;
@@ -103,7 +103,7 @@ class User
      * Set the value of document
      *
      * @return  self
-     */ 
+     */
     public function setDocument(Document $document)
     {
         $this->document = $document;
@@ -113,7 +113,7 @@ class User
 
     /**
      * Get the value of address
-     */ 
+     */
     public function getAddress()
     {
         return $this->address;
@@ -123,7 +123,7 @@ class User
      * Set the value of address
      *
      * @return  self
-     */ 
+     */
     public function setAddress(Address $address)
     {
         $this->address = $address;

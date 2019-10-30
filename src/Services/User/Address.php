@@ -1,6 +1,6 @@
 <?php
 
-namespace URPay\Bean;
+namespace URPay\Services\User;
 
 class Address
 {
