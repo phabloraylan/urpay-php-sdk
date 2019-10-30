@@ -19,7 +19,7 @@
 		"phabloraylan/hashtag-or-arroba-remover": "^1.0"
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit --do-not-cache-result"
     },
     "autoload": {
         "psr-4": {
