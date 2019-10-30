@@ -77,7 +77,7 @@ class Client
 
         $json = file_get_contents($file);
 
-        if ($file != json_decode($json, true)) {
+        if (!$file = json_decode($json, true)) {
             throw new URPaySDKException('O arquivo de configuração possui json inválido');
         }
 
@@ -87,5 +87,11 @@ class Client
 
         $this->tokenCommon = $file['common'];
         $this->tokenTransfer = $file['transfer'];
+    }
+
+    public function useApplicationDefaultTokens()
+    {
+        $file = getenv("URPAY_APPLICATION_TOKENS");
+        $this->setTokenConfig($file);
     }
 }
