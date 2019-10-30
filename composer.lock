@@ -4,8 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b64b6c2218d231e27a7aab6554232ed2",
+    "content-hash": "7e36d67dc1c8524bcca1d265acae57e3",
     "packages": [
+        {
+            "name": "eighty8/stringy",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eighty8/Stringy.git",
+                "reference": "dd9131fcbf6341b67945d18fd835eb95546bf142"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eighty8/Stringy/zipball/dd9131fcbf6341b67945d18fd835eb95546bf142",
+                "reference": "dd9131fcbf6341b67945d18fd835eb95546bf142",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "symfony/polyfill-mbstring": "~1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stringy\\": "src/"
+                },
+                "files": [
+                    "src/Create.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A string manipulation library with multibyte support",
+            "homepage": "https://github.com/eighty8/Stringy",
+            "keywords": [
+                "UTF",
+                "helpers",
+                "manipulation",
+                "methods",
+                "multibyte",
+                "string",
+                "utf-8",
+                "utility",
+                "utils"
+            ],
+            "time": "2019-05-31T20:09:46+00:00"
+        },
         {
             "name": "guzzlehttp/guzzle",
             "version": "6.4.1",
@@ -195,6 +244,45 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
+            "name": "phabloraylan/hashtag-or-arroba-remover",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phabloraylan/hashtag-or-arroba-remover.git",
+                "reference": "b30d87affee25392297f021979016035948857ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phabloraylan/hashtag-or-arroba-remover/zipball/b30d87affee25392297f021979016035948857ab",
+                "reference": "b30d87affee25392297f021979016035948857ab",
+                "shasum": ""
+            },
+            "require": {
+                "eighty8/stringy": "^3.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HashtagOrArrobaRemover\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "phabloraylan",
+                    "email": "phabloraylan@gmail.com"
+                }
+            ],
+            "description": "Hashtag or arroba remover",
+            "time": "2019-10-25T07:49:17+00:00"
+        },
+        {
             "name": "psr/http-message",
             "version": "1.0.1",
             "source": {
@@ -283,6 +371,65 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/b42a2f66e8f1b15ccf25652c3424265923eb4f17",
+                "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.12-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2019-08-06T08:03:45+00:00"
         }
     ],
     "packages-dev": [

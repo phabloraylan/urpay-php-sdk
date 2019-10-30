@@ -9,6 +9,7 @@ use URPay\Http\Endpoint;
 use GuzzleHttp\Exception\ServerException;
 use URPay\Exceptions\URPayResponseException;
 use URPay\Exceptions\URPayTokenException;
+use \HashtagOrArrobaRemover\HashtagOrArrobaRemover;
 
 class UserService extends Api
 {
@@ -52,7 +53,7 @@ class UserService extends Api
     {
         try {
             $clientRest = self::getClientRest();
-
+            $user_id = HashtagOrArrobaRemover::toRemoveSymbol($user_id);
             $response = $clientRest->request(self::GET, Endpoint::USER . '/' . $user_id, [
                 'headers' => [
                     'Authorization' => $client->getTokenCommon()

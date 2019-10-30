@@ -15,7 +15,8 @@
     ],
     "require": {
 		"php": ">=5.5.0",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+		"phabloraylan/hashtag-or-arroba-remover": "^1.0"
     },
     "scripts": {
         "test": "phpunit"
