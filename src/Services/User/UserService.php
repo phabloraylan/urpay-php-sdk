@@ -9,6 +9,7 @@ use URPay\Http\Endpoint;
 use GuzzleHttp\Exception\ServerException;
 use URPay\Exceptions\URPayResponseException;
 use URPay\Exceptions\URPayTokenException;
+use URPay\Exceptions\URPaySDKException;
 use \HashtagOrArrobaRemover\HashtagOrArrobaRemover;
 
 class UserService extends Api
@@ -51,6 +52,11 @@ class UserService extends Api
 
     public static function getResponse(Client $client, $user_id)
     {
+
+        if($user_id == null || $user_id == ""){
+            throw new URPaySDKException("O usuário não pode está vazio", 422);
+        }
+
         try {
             $clientRest = self::getClientRest();
             $user_id = HashtagOrArrobaRemover::toRemoveSymbol($user_id);

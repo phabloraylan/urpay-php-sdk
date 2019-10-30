@@ -30,6 +30,5 @@ class UserTest extends TestCase
         $userResponse = UserService::getUser($client, $user_id_arroba);
 
         $this->assertEquals($userResponse->getUser(), $user_id);
-        $this->assertEquals($userResponse->getDocument()->getDocument(), "01608508510");
     }
 }
