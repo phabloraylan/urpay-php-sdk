@@ -19,6 +19,7 @@
         </whitelist>
     </filter>
     <php>
-        <env name="TOKEN_COMUM" value="testing"/>
+        <env name="TOKEN_COMMON" value="testing"/>
+        <env name="TOKEN_TRANSFER" value="testing"/>
     </php>
 </phpunit>
