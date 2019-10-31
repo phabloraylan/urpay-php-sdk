@@ -1,68 +1,89 @@
-# URPay PHP SDK
-> SDK PHP do urpay.com.br (Consulta usuários e transferências).
+# URPay PHP SDK #
 
+Essa biblioteca permite você se conectar com https://apidocs.urpay.com.br/ através do seu sistema.
 
-Futuramente adicionaremos outras funções.
+Essa biblioteca não é oficial. Contudo, a considero funcional, pois sempre adiciono novas ferramentas.
+
+**NOTA** Foi testada com  PHP 7.1.8 e superior, não garanto funcionar bem em versões anterioes.
+
+## Documentação da API
+
+A documentação oficial da API Rest se encontra aqui: https://apidocs.urpay.com.br/
 
 ## Instalação
 
-Via composer:
+Você pode usar **Composer**
+
+### Composer
+
+O metodo mais conveniente é via [composer](https://getcomposer.org/). Se ainda não possui o composer instalado, [siga as instruções](https://getcomposer.org/doc/00-intro.md).
+
+Execute o seguinte comando na raiz do seu projeto para instalar a biblioteca:
 
 ```sh
 composer require phabloraylan/urpay-php-sdk
 ```
 
-## Usando
-
-Inclua o autoload em seu projeto, exemplo:
+Inclua o autoloader em seu projeto:
 
 ```php
-require_once __DIR__ . '/vendor/autoload.php';
+require_once 'vendor/autoload.php';
 ```
 
-Instanciar a classe  de cliente:
+### Exemplo Básico ###
+
+Recupere informações de saldo da conta:
 
 ```php
-//Classe cliente
-$cliente = new \URPay\Cliente();
+use URPay\Client;
+use URPay\Services\Balance\BalanceService;
 
-//Set o seu token comum
-$cliente->setTokenComum('<TOKEN>');
+$client = new Client();
+$client->setTokenCommon("TOKEN_COMUM");
+
+$balanceResponse = BalanceService::getBalance($client);
+echo $balanceResponse->getBalance();//saldo
+echo $balanceResponse->getBlocked();//saldo bloqueado
+echo $balanceResponse->getFuture();//saldo futuro
+echo $balanceResponse->getGiftcard();//saldo de vale-presente
+
 ```
 
-Instanciar a classe de consulta:
+### Consultar Transação ###
+
+Recupere informações de transação:
 
 ```php
-//O construtor da classe requer uma instância de cliente
-$consulta = new \URPay\Consulta($cliente);
-```
+use URPay\Client;
+use URPay\Services\InternalTransfer\InternalTransferService;
 
-Obtenha informações de um usuário específico:
+$client = new Client();
+$client->setTokenCommon("TOKEN_COMUM");
+
+$transf = "ID_TRANSFERÊNCIA";
+$transfResponse = InternalTransferService::getInternalTransfer($client, $transf);
+
+echo $transfResponse->getValue();//valor (resultado em decimal ex.: 10.00)
+
+//Estou sem tempo pra documentar o resto, veja no código.
+```
+### Consultar Usuário ###
+
+Recupere informações do usuário:
 
 ```php
-try{
+use URPay\Client;
+use URPay\Services\User\UserService;
 
-    $usuario = $consulta->getUsuario('usuário');
-    print_r($usuario);//retorno em array
+$client = new Client();
+$client->setTokenCommon(getenv("TOKEN_COMMON"));
 
-}catch(\URPay\Exception\NaoEncontrado $e){
-    echo $e->getMessage();//Mensagem de erro
-}catch(\URPay\Exception\ErroServidor $e){
-    echo $e->getMessage();//Mensagem de erro
-}
+$user_id = getenv("USER_ID");
+$userResponse = UserService::getUser($client, $user_id);
+
+echo $userResponse->getId();//_id do usuário
+
+//Estou sem tempo pra documentar o resto, veja no código.
 ```
 
-Obtenha informações de uma transferência específica:
-
-```php
-try{
-
-    $transferencia = $consulta->getTransferencia('id transfência');
-    print_r($transferencia);//retorno em array
-
-}catch(\URPay\Exception\NaoEncontrado $e){
-    echo $e->getMessage();//Mensagem de erro
-}catch(\URPay\Exception\ErroServidor $e){
-    echo $e->getMessage();//Mensagem de erro
-}
-```
+No momento API de transferência está enfrentrando estabilidades, quando se normalizar adiciono aqui e tambem termino de documentar todas os metódos.
