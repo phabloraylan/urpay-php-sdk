@@ -23,5 +23,8 @@
         <env name="TOKEN_TRANSFER" value="testing"/>
         <env name="BALANCE_VALUE" value="1153.20"/>
         <env name="USER_ID" value="phabloraylan"/>
+        <env name="INTERNAL_TRANSFER_VALUE" value="400.00"/>
+        <env name="INTERNAL_TRANSFER_HASH" value="5c482be20c9e6e0b017f026f"/>
+        <env name="INTERNAL_TRANSFER_YEAR" value="2019"/>
     </php>
 </phpunit>

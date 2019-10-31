@@ -3,6 +3,7 @@
 namespace URPay\Services\InternalTransfer;
 
 use URPay\Services\User\User;
+use Carbon\Carbon;
 
 class InternalTransfer
 {
@@ -20,6 +21,7 @@ class InternalTransfer
     private $sendTo;
     private $value;
     private $registered;
+    private $registeredCarbon;
 
 
     /**
@@ -278,6 +280,27 @@ class InternalTransfer
     public function setRegistered($registered)
     {
         $this->registered = $registered;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of registeredCarbon
+     */ 
+    public function getRegisteredCarbon()
+    {
+        $this->registeredCarbon = new Carbon($this->getRegistered());
+        return $this->registeredCarbon;
+    }
+
+    /**
+     * Set the value of registeredCarbon
+     *
+     * @return  self
+     */ 
+    public function setRegisteredCarbon(Carbon $registeredCarbon)
+    {
+        $this->registeredCarbon = $registeredCarbon;
 
         return $this;
     }

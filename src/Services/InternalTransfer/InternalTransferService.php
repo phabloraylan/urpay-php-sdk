@@ -21,18 +21,18 @@ class InternalTransferService extends Api
     private function __construct()
     { }
 
-    public static function getInternalTransfer(Client $client)
+    public static function getInternalTransfer(Client $client, $transf)
     {
         if (!isset(self::$transfer)) {
 
-            $response = self::getResponse($client);
+            $response = self::getResponse($client, $transf);
             $arr = self::fromJson($response)['transfer'];
 
             self::$transfer = new InternalTransfer();
-            
+
             $cryptoCoins = new CryptoCoins();
             $cryptoCoins->setTransactionHash($arr['crypto_coins']['transaction_hash']);
-            
+
             self::$transfer->setCryptoCoins($cryptoCoins);
 
             self::$transfer->setUpdated($arr['updated']);
@@ -68,18 +68,17 @@ class InternalTransferService extends Api
 
             self::$transfer->setValue(MoneyUtil::convertIntToDecimal($arr['value']));
             self::$transfer->setRegistered($arr['registered']);
-
         }
 
         return self::$transfer;
     }
 
-    public static function getResponse(Client $client)
+    public static function getResponse(Client $client, $transf)
     {
         try {
             $clientRest = self::getClientRest();
 
-            $response = $clientRest->request(self::GET, Endpoint::INTERNAL_TRANSFER, [
+            $response = $clientRest->request(self::GET, Endpoint::INTERNAL_TRANSFER . '/' . $transf, [
                 'headers' => [
                     'Authorization' => $client->getTokenCommon()
                 ]
