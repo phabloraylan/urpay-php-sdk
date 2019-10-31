@@ -76,9 +76,9 @@ use URPay\Client;
 use URPay\Services\User\UserService;
 
 $client = new Client();
-$client->setTokenCommon(getenv("TOKEN_COMMON"));
+$client->setTokenCommon("TOKEN_COMMON");
 
-$user_id = getenv("USER_ID");
+$user_id = "USER_ID" //exemplo @phabloraylan
 $userResponse = UserService::getUser($client, $user_id);
 
 echo $userResponse->getId();//_id do usuário
