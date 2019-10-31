@@ -19,7 +19,7 @@
         </whitelist>
     </filter>
     <php>
-        <env name="TOKEN_COMMON" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWFiNzU4NDM0NzA1MDAxODcxMzNhMSIsInR5cGVMb2dpbiI6InVzZXJfdG9rZW4iLCJ0eXBlVG9rZW4iOiJnZW5lcmFsIiwiaWF0IjoxNTcxMzQ4NTMzfQ.PpDDcABwhLsZXDU-IcAXD8_SfL29hKe6DNstBNmSu7E"/>
+        <env name="TOKEN_COMMON" value="token"/>
         <env name="TOKEN_TRANSFER" value="testing"/>
         <env name="BALANCE_VALUE" value="1153.20"/>
         <env name="USER_ID" value="phabloraylan"/>
