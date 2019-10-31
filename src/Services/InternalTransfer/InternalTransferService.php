@@ -38,7 +38,8 @@ class InternalTransferService extends Api
             self::$transfer->setUpdated($arr['updated']);
             self::$transfer->setPayment($arr['is_payment']);
             self::$transfer->setStatus($arr['status']);
-            self::$transfer->setContested($arr['is_contested']);
+            self::$transfer->setContested($arr['contested']);
+            self::$transfer->setIsContested($arr['is_contested']);
             self::$transfer->setReversed($arr['is_reversed']);
             self::$transfer->setReversal($arr['is_reversal']);
             self::$transfer->setIsCryptoCoins($arr['is_crypto_coins']);

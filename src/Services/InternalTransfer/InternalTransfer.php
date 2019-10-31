@@ -13,6 +13,7 @@ class InternalTransfer
     private $payment;
     private $status;
     private $contested;
+    private $isContested;
     private $reversed;
     private $reversal;
     private $isCryptoCoins;
@@ -301,6 +302,26 @@ class InternalTransfer
     public function setRegisteredCarbon(Carbon $registeredCarbon)
     {
         $this->registeredCarbon = $registeredCarbon;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of isContested
+     */
+    public function getIsContested()
+    {
+        return $this->isContested;
+    }
+
+    /**
+     * Set the value of isContested
+     *
+     * @return  self
+     */
+    public function setIsContested($isContested)
+    {
+        $this->isContested = $isContested;
 
         return $this;
     }
