@@ -286,7 +286,7 @@ class InternalTransfer
 
     /**
      * Get the value of registeredCarbon
-     */ 
+     */
     public function getRegisteredCarbon()
     {
         $this->registeredCarbon = new Carbon($this->getRegistered());
@@ -297,7 +297,7 @@ class InternalTransfer
      * Set the value of registeredCarbon
      *
      * @return  self
-     */ 
+     */
     public function setRegisteredCarbon(Carbon $registeredCarbon)
     {
         $this->registeredCarbon = $registeredCarbon;
