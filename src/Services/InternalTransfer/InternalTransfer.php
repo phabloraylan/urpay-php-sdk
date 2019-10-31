@@ -168,7 +168,7 @@ class InternalTransfer
     /**
      * Get the value of isCryptoCoins
      */
-    public function getIsCryptoCoins()
+    public function isCryptoCoins()
     {
         return $this->isCryptoCoins;
     }
@@ -309,7 +309,7 @@ class InternalTransfer
     /**
      * Get the value of isContested
      */
-    public function getIsContested()
+    public function isContested()
     {
         return $this->isContested;
     }
