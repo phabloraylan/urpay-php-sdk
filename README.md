@@ -78,6 +78,7 @@ echo $transfResponse->isReversed();
 echo $transfResponse->isReversal();
 echo $transfResponse->isCryptoCoins();
 
+// De quem saiu a transação
 $sendFrom = $transfResponse->getSendFrom();
 echo $sendFrom->getId();
 echo $sendFrom->getUser();
@@ -87,6 +88,7 @@ $sendFromDocument = $sendFrom->getDocument();
 echo $sendFromDocument->getDocument();
 echo $sendFromDocument->getType();
 
+// Para quem saiu a transação
 $sendTo = $transfResponse->getSendTo();
 echo $sendTo->getId();
 echo $sendTo->getUser();
