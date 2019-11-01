@@ -30,7 +30,7 @@ Inclua o autoloader em seu projeto:
 require_once 'vendor/autoload.php';
 ```
 
-### Exemplo Básico ###
+### Consultar Saldo ###
 
 Recupere informações de saldo da conta:
 
