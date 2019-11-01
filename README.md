@@ -120,7 +120,7 @@ use URPay\Services\User\UserService;
 $client = new Client();
 $client->setTokenCommon("TOKEN_COMMON");
 
-$user_id = "USER_ID" // Exemplo: @phabloraylan ou phabloraylan
+$user_id = "@fulanodetal" // Exemplo: @fulanodetal ou fulanodetal
 $userResponse = UserService::getUser($client, $user_id);
 
 echo $userResponse->getId();//_id do usuário
