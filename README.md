@@ -139,12 +139,15 @@ echo $userAddress->getCountry();
 
 // Caso deseje consultar usuário por documento, use o terceiro parametro com a constante UserService::DOCUMENT, exemplo: 
 
+$client = new Client();
+// O token precisa ser de consulta a documento
+$client->setTokenDoc("TOKEN_DOC");
+
 $doc = "12345678900" // Exemplo: 12345678900 ou 123.456.789-00 (Com máscara também aceito)
 $userResponse = UserService::getUser($client, $doc,UserService::DOCUMENT);
 
-// Todos os metódos acima pode ser usado e tambem o de e-mail, que só retorna quando está com true
+// Todos os metódos de consulta por usuário pode ser usado e tambem o de e-mail, que só retorna quando está com true
 echo $userResponse->getEmail();
-
 ```
 
 No momento API de transferência está enfrentrando estabilidades, quando se normalizar adiciono aqui e tambem termino de documentar todas os metódos.
