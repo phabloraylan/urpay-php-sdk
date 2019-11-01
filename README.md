@@ -131,7 +131,7 @@ echo $userResponse->getName();
 echo $userResponse->getGender();
 
 // Documento do usuário
-$userDocument= $userResponse->getDocument();
+$userDocument = $userResponse->getDocument();
 echo $userDocument->getDocument();
 echo $userDocument->getType();
 
