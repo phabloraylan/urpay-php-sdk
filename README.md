@@ -137,7 +137,7 @@ echo $userAddress->getCity();
 echo $userAddress->getState();
 echo $userAddress->getCountry();
 
-// Caso deseje consultar usuário por cpf use o terceiro parametro com a constante UserService::DOCUMENT, exemplo: 
+// Caso deseje consultar usuário por documento use o terceiro parametro com a constante UserService::DOCUMENT, exemplo: 
 
 $doc = "12345678900" // Exemplo: 12345678900 ou 123.456.789-00 (Com máscara também aceito)
 $userResponse = UserService::getUser($client, $doc,UserService::DOCUMENT);
