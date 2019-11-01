@@ -46,7 +46,6 @@ echo $balanceResponse->getBalance();//saldo
 echo $balanceResponse->getBlocked();//saldo bloqueado
 echo $balanceResponse->getFuture();//saldo futuro
 echo $balanceResponse->getGiftcard();//saldo de vale-presente
-
 ```
 
 ### Consultar Transação ###
@@ -107,7 +106,6 @@ $regiteredCarbon = $transfResponse->getRegisteredCarbon();
 if($transfResponse->isPaymentSuccess()){
     //confirmada
 }
-
 ```
 ### Consultar Usuário ###
 
@@ -138,7 +136,6 @@ $userAddress = $userResponse->getAddress();
 echo $userAddress->getCity();
 echo $userAddress->getState();
 echo $userAddress->getCountry();
-
 ```
 
 No momento API de transferência está enfrentrando estabilidades, quando se normalizar adiciono aqui e tambem termino de documentar todas os metódos.
