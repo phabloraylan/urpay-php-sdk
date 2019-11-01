@@ -65,6 +65,41 @@ $transfResponse = InternalTransferService::getInternalTransfer($client, $transf)
 
 echo $transfResponse->getValue();//valor (resultado em decimal ex.: 10.00)
 
+echo $transfResponse->getId();
+
+$cryptoCoins = $transfResponse->getCryptoCoins();
+echo $cryptoCoins->getTransactionHash();
+
+echo $transfResponse->getUpdated();
+echo $transfResponse->isPayment();
+echo $transfResponse->getStatus();
+echo $transfResponse->getContested();
+echo $transfResponse->isReversed();
+echo $transfResponse->isReversal();
+echo $transfResponse->isCryptoCoins();
+
+$sendFrom = $transfResponse->getSendFrom();
+echo $sendFrom->getId();
+echo $sendFrom->getUser();
+echo $sendFrom->getName();
+
+$sendFromDocument = $sendFrom->getDocument();
+echo $sendFromDocument->getDocument();
+echo $sendFromDocument->getType();
+
+$sendTo = $transfResponse->getSendTo();
+echo $sendTo->getId();
+echo $sendTo->getUser();
+echo $sendTo->getName();
+
+$sendToDocument = $sendTo->getDocument();
+echo $sendToDocument->getDocument();
+echo $sendToDocument->getType();
+
+echo $transfResponse->getRegistered();
+
+//retorma uma instancia de Carbon\Carbon usuando a biblioteca composer require nesbot/carbon
+$regiteredCarbon = $transfResponse->getRegisteredCarbon();
 
 // Verificar se a hash tem sua transferência 100% confirmada e sem contestação:
 if($transfResponse->isPaymentSuccess()){
