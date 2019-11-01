@@ -126,6 +126,20 @@ $user_id = "USER_ID" //exemplo @phabloraylan
 $userResponse = UserService::getUser($client, $user_id);
 
 echo $userResponse->getId();//_id do usuário
+echo $userResponse->getUser();
+echo $userResponse->getName();
+echo $userResponse->getGender();
+
+// Documento do usuário
+$userDocument= $userResponse->getDocument();
+echo $userDocument->getDocument();
+echo $userDocument->getType();
+
+// Endereço do usuário
+$userAddress = $userResponse->getAddress();
+echo $userAddress->getCity();
+echo $userAddress->getState();
+echo $userAddress->getCountry();
 
 //Estou sem tempo pra documentar o resto, veja no código.
 ```
