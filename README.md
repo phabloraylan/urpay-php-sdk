@@ -146,7 +146,7 @@ $client->setTokenDoc("TOKEN_DOC");
 $doc = "12345678900" // Exemplo: 12345678900 ou 123.456.789-00 (Com máscara também aceito)
 $userResponse = UserService::getUser($client, $doc,UserService::DOCUMENT);
 
-// Todos os metódos de consulta por usuário pode ser usado e tambem o de e-mail, que só retorna quando está com true
+// Todos os metódos de consulta por usuário pode ser usado e tambem o de e-mail, que só retorna quando está com a constante UserService::DOCUMENT
 echo $userResponse->getEmail();
 ```
 
