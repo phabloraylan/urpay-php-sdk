@@ -66,8 +66,7 @@ $transfResponse = InternalTransferService::getInternalTransfer($client, $transf)
 echo $transfResponse->getValue();//valor (resultado em decimal ex.: 10.00)
 
 
-// Verificar se a hash tem sua transferência 100% confirmada e sem contestação.
-
+// Verificar se a hash tem sua transferência 100% confirmada e sem contestação:
 if($transfResponse->isPaymentSuccess()){
     //confirmada
 }
