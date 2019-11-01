@@ -108,8 +108,6 @@ if($transfResponse->isPaymentSuccess()){
     //confirmada
 }
 
-
-//Estou sem tempo pra documentar o resto, veja no código.
 ```
 ### Consultar Usuário ###
 
@@ -141,7 +139,6 @@ echo $userAddress->getCity();
 echo $userAddress->getState();
 echo $userAddress->getCountry();
 
-//Estou sem tempo pra documentar o resto, veja no código.
 ```
 
 No momento API de transferência está enfrentrando estabilidades, quando se normalizar adiciono aqui e tambem termino de documentar todas os metódos.
