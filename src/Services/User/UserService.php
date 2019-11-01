@@ -18,6 +18,7 @@ class UserService extends Api
 {
 
     private static $user;
+    const DOCUMENT = true;
 
     private function __construct()
     { }

@@ -14,9 +14,9 @@ class UserDocTest extends TestCase
         $client->setTokenDoc(getenv("TOKEN_DOC"));
 
         $user_id = getenv("USER_DOC");
-        $userResponse = UserService::getUser($client, $user_id,true);
+        $userResponse = UserService::getUser($client, $user_id,UserService::DOCUMENT);
 
-        $this->assertEquals($userResponse->getEmail(),"phabloraylan@gmail.com");
+        $this->assertEquals($userResponse->getEmail(),getenv("USER_EMAIL"));
     }
 
 }

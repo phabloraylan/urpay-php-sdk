@@ -137,10 +137,10 @@ echo $userAddress->getCity();
 echo $userAddress->getState();
 echo $userAddress->getCountry();
 
-// Caso deseje consultar usuário por cpf use o terceiro parametro como true, exemplo: 
+// Caso deseje consultar usuário por cpf use o terceiro parametro com a constante UserService::DOCUMENT, exemplo: 
 
 $doc = "12345678900" // Exemplo: 12345678900 ou 123.456.789-00 (Com máscara também aceito)
-$userResponse = UserService::getUser($client, $doc, true);
+$userResponse = UserService::getUser($client, $doc,UserService::DOCUMENT);
 
 // Todos os metódos acima pode ser usado e tambem o de e-mail, que só retorna quando está com true
 echo $userResponse->getEmail();
