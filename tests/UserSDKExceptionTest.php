@@ -17,7 +17,7 @@ class UserSDKExceptionTest extends TestCase
         $client = new Client();
         $client->setTokenCommon(getenv("TOKEN_COMMON"));
 
-        $user_id = "";
+        $user_id = null;
         $userResponse = UserService::getUser($client, $user_id);
     }
 }

@@ -17,7 +17,8 @@
 		"php": ">=7.1.8",
         "guzzlehttp/guzzle": "~6.0",
 		"phabloraylan/hashtag-or-arroba-remover": "^1.0",
-		"nesbot/carbon": "^2.25"
+		"nesbot/carbon": "^2.25",
+		"jansenfelipe/utils": "^2.0"
     },
     "scripts": {
         "test": "phpunit --do-not-cache-result"

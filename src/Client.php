@@ -13,6 +13,7 @@ class Client
 {
     private $tokenCommon;
     private $tokenTransfer;
+    private $tokenDoc;
     private $tokenConfig;
 
     /**
@@ -93,5 +94,25 @@ class Client
     {
         $file = getenv("URPAY_APPLICATION_TOKENS");
         $this->setTokenConfig($file);
+    }
+
+    /**
+     * Get the value of tokenDoc
+     */ 
+    public function getTokenDoc()
+    {
+        return $this->tokenDoc;
+    }
+
+    /**
+     * Set the value of tokenDoc
+     *
+     * @return  self
+     */ 
+    public function setTokenDoc($tokenDoc)
+    {
+        $this->tokenDoc = $tokenDoc;
+
+        return $this;
     }
 }

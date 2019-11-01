@@ -11,6 +11,8 @@ use URPay\Exceptions\URPayResponseException;
 use URPay\Exceptions\URPayTokenException;
 use URPay\Exceptions\URPaySDKException;
 use \HashtagOrArrobaRemover\HashtagOrArrobaRemover;
+use JansenFelipe\Utils\Utils as Utils;
+use JansenFelipe\Utils\Mask as Mask;
 
 class UserService extends Api
 {
@@ -20,11 +22,16 @@ class UserService extends Api
     private function __construct()
     { }
 
-    public static function getUser(Client $client, $user_id)
+    public static function getUser(Client $client, $user_id, $doc = false)
     {
+
+        if ($user_id == null || empty($user_id)) {
+            throw new URPaySDKException("O usuário não pode está vazio", 422);
+        }
+
         if (!isset(self::$user)) {
 
-            $response = self::getResponse($client, $user_id);
+            $response = self::getResponse($client, $user_id, $doc);
             $arr = self::fromJson($response)['user'];
 
             self::$user = new User();
@@ -32,6 +39,10 @@ class UserService extends Api
             self::$user->setId($arr['_id']);
             self::$user->setUser($arr['user']);
             self::$user->setName($arr['name']);
+
+            if ($doc) {
+                self::$user->setEmail($arr['email']['email']);
+            }
 
             $document = new Document();
             $document->setDocument($arr['document']['document']);
@@ -50,21 +61,28 @@ class UserService extends Api
         return self::$user;
     }
 
-    public static function getResponse(Client $client, $user_id)
+    public static function getResponse(Client $client, $user_id, $doc = false)
     {
-
-        if($user_id == null || $user_id == ""){
-            throw new URPaySDKException("O usuário não pode está vazio", 422);
-        }
 
         try {
             $clientRest = self::getClientRest();
-            $user_id = HashtagOrArrobaRemover::toRemoveSymbol($user_id);
-            $response = $clientRest->request(self::GET, Endpoint::USER . '/' . $user_id, [
-                'headers' => [
-                    'Authorization' => $client->getTokenCommon()
-                ]
-            ]);
+
+            if ($doc) {
+
+                $user_id = Utils::unmask($user_id, Mask::DOCUMENTO); 
+                $response = $clientRest->request(self::GET, Endpoint::USER_DOC . '/' . $user_id, [
+                    'headers' => [
+                        'Authorization' => $client->getTokenDoc()
+                    ]
+                ]);
+            } else {
+                $user_id = HashtagOrArrobaRemover::toRemoveSymbol($user_id);
+                $response = $clientRest->request(self::GET, Endpoint::USER . '/' . $user_id, [
+                    'headers' => [
+                        'Authorization' => $client->getTokenCommon()
+                    ]
+                ]);
+            }
         } catch (ClientException $e) {
 
             if ($e->getCode() == 401) {

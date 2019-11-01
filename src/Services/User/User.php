@@ -7,6 +7,7 @@ class User
     private $id;
     private $user;
     private $name;
+    private $email;
     private $gender;
     private $document;
     private $address;
@@ -127,6 +128,26 @@ class User
     public function setAddress(Address $address)
     {
         $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
 
         return $this;
     }
