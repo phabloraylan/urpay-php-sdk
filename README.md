@@ -88,7 +88,7 @@ $sendFromDocument = $sendFrom->getDocument();
 echo $sendFromDocument->getDocument();
 echo $sendFromDocument->getType();
 
-// Para quem saiu a transação
+// Para quem foi a transação
 $sendTo = $transfResponse->getSendTo();
 echo $sendTo->getId();
 echo $sendTo->getUser();
