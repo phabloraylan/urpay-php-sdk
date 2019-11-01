@@ -24,6 +24,7 @@ class InternalTransfer
     private $registered;
     private $registeredCarbon;
 
+    const PROCESSED = 'processed';
 
     /**
      * Get the value of cryptoCoins
@@ -324,5 +325,14 @@ class InternalTransfer
         $this->isContested = $isContested;
 
         return $this;
+    }
+
+    //Verificar se a hash tem seu pagamento realizado com sucesso, sem contestação
+    public function isPaymentSuccess()
+    {
+        if(!$this->isPayment() && !$this->IsContested() && !$this->isReversal() && !$this->isReversed() && $this->getStatus() == self::PROCESSED){
+            return true;    
+        }
+        return false;
     }
 }
